@@ -1,0 +1,21 @@
+#! /bin/bash
+
+BASE_FOLD=/home/jari/Workspace/event-driven-order-system
+mkdir $BASE_FOLD
+mkdir $BASE_FOLD/base-domains $BASE_FOLD/stock-service $BASE_FOLD/email-service $BASE_FOLD/order-service
+
+curl -G https://start.spring.io/starter.tgz -d dependencies=web,kafka -d type=maven-project -d javaVersion=19 -d applicationName=OrderService -d groupId=io.j4r1 -d artifactId=order-service -d packageName=io.j4r1.orderservice -d name=OrderService | tar -xzvf - --directory=$BASE_FOLD/order-service 
+
+curl -G https://start.spring.io/starter.tgz -d dependencies=web,kafka -d type=maven-project -d javaVersion=19 -d applicationName=StockService -d groupId=io.j4r1 -d artifactId=stock-service -d packageName=io.j4r1.stockservice -d name=StockService | tar -xzvf - --directory=$BASE_FOLD/stock-service
+
+curl -G https://start.spring.io/starter.tgz -d dependencies=web,kafka -d type=maven-project -d javaVersion=19 -d applicationName=EmailService -d groupId=io.j4r1 -d artifactId=email-service -d packageName=io.j4r1.emailservice -d name=EmailService | tar -zxvf - --directory=$BASE_FOLD/email-service 
+
+curl -G https://start.spring.io/starter.tgz -d dependencies=lombok -d type=maven-project -d javaVersion=19 -d applicationName=BaseDomains -d groupId=io.j4r1 -d artifactId=base-domains -d packageName=io.j4r1.base-domains -d name=BaseDomains | tar -zxvf - --directory=$BASE_FOLD/base-domains
+
+
+#mkdir $BASE_FOLD
+
+#tar -xvf order.tgz -C $BASE_FOLD/order-service
+#tar -xvf stock.tgz -C $BASE_FOLD/stock-service
+#tar -xvf email.tgz -C $BASE_FOLD/email-service
+#tar -xvf base.tgz -C $BASE_FOLD/base-domains
